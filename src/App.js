@@ -14,6 +14,7 @@ export default class App extends Component {
 
   state ={
     query: '',
+    error: null,
     page: 1,
     status: 'idle',
     images: []
@@ -25,6 +26,11 @@ export default class App extends Component {
       images: [] 
     });
   };
+
+  renderImg = () => {
+    const { query, page } = this.state;
+    
+  }
   
   render() {
 

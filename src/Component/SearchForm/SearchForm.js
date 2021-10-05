@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class SearchForm extends Component{
     state = {
@@ -27,14 +28,16 @@ export default class SearchForm extends Component{
 render () {
     return (
         <header>
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <button type='submit'>
                     <span>Try me!</span>
                 </button>
                 <input
                 placeholder='lets search smth....'
                 className=''
-                type='text'
+                    type='text'
+                    autoComplete="off"
+            autoFocus
                 value={this.state.query}
                 onClick={this.handleChange}
                 />
