@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import style from 'Component/SearchForm/SearchForm.module.css';
 
 export default class SearchForm extends Component{
     state = {
@@ -27,19 +28,19 @@ export default class SearchForm extends Component{
 
 render () {
     return (
-        <header>
-            <form onSubmit={this.handleSubmit}>
-                <button type='submit'>
-                    <span>Try me!</span>
+        <header className='Searchbar'>
+            <form className='SearchForm' onSubmit={this.handleSubmit}>
+                <button  type='submit' className='SearchForm-button'>
+                    <span className='SearchForm-button-label'>Try me!</span>
                 </button>
                 <input
                 placeholder='lets search smth....'
-                className=''
+                className='SearchForm-input'
                     type='text'
                     autoComplete="off"
             autoFocus
                 value={this.state.query}
-                onClick={this.handleChange}
+                onChange={this.handleChange}
                 />
             </form>
         </header>

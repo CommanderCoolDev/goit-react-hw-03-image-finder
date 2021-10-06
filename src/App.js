@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import fetchImg from 'services/ApiPixabay';
+import ApiPixabay from 'services/ApiPixabay';
 import SearchForm from 'Component/SearchForm/SearchForm';
 import './App.css';
 
@@ -19,6 +19,15 @@ export default class App extends Component {
     status: 'idle',
     images: []
   };
+  componentDidUpdate(prevProps, prevState) {
+    const prevName = prevState.query;
+    const nextName = this.state.query;
+
+    if (prevName !== nextName) {
+      this.renderImg();
+    }
+  };
+  
   handleFormSubmit = newQuery => {
     this.setState({ 
       query: newQuery, 
@@ -30,15 +39,29 @@ export default class App extends Component {
   renderImg = () => {
     const { query, page } = this.state;
     
-  }
-  
+    ApiPixabay
+      .fetchImg(query, page)
+      .then(response =>
+        this.setState(prevState => ({
+          images: [...prevState.images, ...response.hits],
+          page: prevState.page + 1,
+        })),
+      )
+      .catch(error => this.setState({ error, status: Status.REJECTED }))
+      .finally(() => this.setState({ status: Status.RESOLVED }));
+  };
+
+ 
   render() {
 
     return(
-      <div>
+      <>
         <SearchForm onSubmit={this.handleFormSubmit}/>
       <ToastContainer autoClose={5000}/>
-      </div>
+
+
+
+      </>
       
   
   
