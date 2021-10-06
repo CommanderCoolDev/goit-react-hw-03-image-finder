@@ -3,6 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import ApiPixabay from 'services/ApiPixabay';
 import SearchForm from 'Component/SearchForm/SearchForm';
 import './App.css';
+import ImageGallery from 'Component/ImageGallery/ImageGallery';
+// import ImageItem from 'Component/ImageItem/ImageItem';
 
 const Status = {
   IDLE: 'idle',
@@ -53,11 +55,14 @@ export default class App extends Component {
 
  
   render() {
+    const { error, status } = this.state;
 
     return(
       <>
         <SearchForm onSubmit={this.handleFormSubmit}/>
-      <ToastContainer autoClose={5000}/>
+        <ToastContainer autoClose={5000} />
+        
+        <ImageGallery images={this.state.images}/>
 
 
 

@@ -10,7 +10,7 @@ export default class SearchForm extends Component{
     };
 
     handleChange = e => {
-        this.setState({query: e.target.value.toLowerCase()})
+        this.setState({ query: e.currentTarget.value.toLowerCase() });
     };
 
     handleSubmit = e => {
