@@ -86,8 +86,8 @@ export default class App extends Component {
 
         <SearchForm onSubmit={this.handleFormSubmit}></SearchForm>
         <ToastContainer autoClose={4000} />
-        {status === Status.IDLE && <div><img src='https://cdn.pixabay.com/photo/2016/02/19/11/53/pug-1210025_960_720.jpg' alt=''/></div>}
-        {status === Status.REJECTED && <div>{error.message}<img src='https://cdn.pixabay.com/photo/2016/02/19/11/53/pug-1210025_960_720.jpg' alt=''/></div>}
+        {status === Status.IDLE && <div className='imgGreet'>Hello!<img src='https://cdn.pixabay.com/photo/2016/03/31/15/04/alien-1292972_960_720.png' alt=''/></div>}
+        {status === Status.REJECTED && <div className='imgGreet'>{error.message}<img src='https://cdn.pixabay.com/photo/2016/02/19/10/13/pug-1209129_960_720.jpg' alt=''/></div>}
         {status === Status.PENDING && (
           <Loader type="Puff" color="#3fb566" height={100} width={200} timeout={3000}/>
         )}
